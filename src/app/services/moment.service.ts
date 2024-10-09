@@ -23,4 +23,8 @@ export class MomentService {
   getMoments(api_url:string):Observable<Response<Moment[]>>{
     return this.http.get<Response<Moment[]>>(`${api_url}/api/moments`)
   }
+
+  getMoment(api_url:string, id:string | null):Observable<Response<Moment>>{
+    return this.http.get<Response<Moment>>(`${api_url}/api/moments/${id}`)
+  }
 }

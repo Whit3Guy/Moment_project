@@ -1,0 +1,27 @@
+<div *ngIf="moment">
+<div class="moment p-4">
+        <h1>{{  moment.title }}</h1>
+            <img src="{{ baseApiUrl + '/uploads/' + moment.image }}" alt="{{moment.title}}">
+            <div class="about-moment">
+                <h3>Sobre este momento</h3>
+                <p>{{ moment.description }}</p>
+            </div>
+            <h5>Ações:</h5>
+            <a routerLink="/moments/edit/{{moment.id}}" class="edit-btn" ><fa-icon [icon]=" FaEdit " ></fa-icon></a>
+            <button class="btn btn-secondary mt-2">
+                <fa-icon [icon]="FaTimes" ></fa-icon> Excluir
+            </button>
+        </div>
+        <!-- Todo Comentários -->
+        </div>
+
+
+
+
+
+
+
+<div *ngIf="!moment" class="text-center p-3" >
+    <h1>Usuário não encontrado</h1>
+    <a routerLink="/"> Voltar para a página principal </a>
+</div>

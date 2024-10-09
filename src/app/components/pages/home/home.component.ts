@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MomentService } from '../../../services/moment.service';
 import { Moment } from '../../../models/moment';
 import { environment } from '../../../../environments/environment.development';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,8 @@ export class HomeComponent implements OnInit {
   
   constructor(public momentService:MomentService){}
 
+  FaSearch = faSearch
+  searchTerm:string = ""
   allMoments:Moment[]= []
   moments:Moment[]= []
   baseApiUrl = environment.baseApiUrl
@@ -37,5 +40,19 @@ export class HomeComponent implements OnInit {
   );
 
   }
+
+  search(evento:Event): void{
+    //typescript não dx pegar o valor do evento direto
+    console.log("Tá filtrando")
+    const target = evento.target as HTMLInputElement
+    const value = target.value
+    console.log(value)
+
+    this.moments = this.allMoments.filter((moment) =>{
+      return moment.title.toLowerCase().includes(value)
+    });
+    
+  }
+
 
 }

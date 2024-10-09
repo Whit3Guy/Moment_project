@@ -1,9 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
+/* *{
+  border: 2px solid white;
+} */
 
-
-hhtml {
+html {
   height: 100%;
 }
 body {
