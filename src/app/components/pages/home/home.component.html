@@ -1,4 +1,13 @@
 <div class="p-2">
-    <p>I'm home</p>
-    <app-messages></app-messages>
+    <h1>Veja o que estão compartilhando!</h1>
+
+    <!--  Form de busca -->
+
+    <div *ngFor="let item of moments" class="home-container">
+        <p>{{item.created_at}}</p>
+        <h1>{{item.title}}</h1>
+        <p>{{item.description}}</p>
+
+
+    </div>
 </div>
