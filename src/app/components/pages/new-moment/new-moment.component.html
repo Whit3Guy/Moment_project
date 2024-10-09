@@ -4,7 +4,11 @@
             <h2>Compartilhe o seu <span>Momento!</span></h2>
         </div>
         <div class=" row row-lg-2 container text-center">
-        <app-moment-form [btn_text]="btn_text"></app-moment-form>
+        <app-moment-form
+        [btn_text]="btn_text"
+        (onSubmit)="createHandler($event)" 
+        >
+        </app-moment-form>
     </div>
     </div>
 </div>
