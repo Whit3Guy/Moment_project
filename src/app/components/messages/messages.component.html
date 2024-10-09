@@ -1,0 +1,28 @@
+<style>
+  .alert-container {
+      position: fixed;
+      top: 10%; /* Ajuste a posição vertical */
+      left: 50%;
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      z-index: 1050; /* Deve ser maior que outros elementos para ficar na frente */
+  }
+</style>
+
+
+<div 
+*ngIf="messageService.message"
+class="alert-container" 
+>
+
+  <div class="card w-100 text-center">
+    <div class="card-body bg-secondary bg-gradient  text-light ">
+      <h5 class="card-title">Mensagem do Sistema</h5>
+      <p class="card-text">{{ messageService.message }}</p>
+      <button (click)="remover()" class="btn btn-primary">
+        <fa-icon [icon]="fatTimes">
+        </fa-icon>
+        Button</button>
+    </div>
+  </div>
+  
+</div>

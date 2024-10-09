@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Moment } from '../../../models/moment';
 import { MomentService } from '../../../services/moment.service';
+import { MessagesService } from '../../../services/messages.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-moment',
@@ -9,7 +11,11 @@ import { MomentService } from '../../../services/moment.service';
 })
 export class NewMomentComponent {
 
-  constructor(private momentService:MomentService){}
+  constructor(
+    private momentService:MomentService, 
+    private messageService:MessagesService,
+    private route:Router
+  ){}
   btn_text:string = "Enviar"
 
 createHandler(moment:Moment){
@@ -21,7 +27,7 @@ createHandler(moment:Moment){
     formData.append("image", moment.image)
 
     }
-    // -- todo -- 
+
     this.momentService.createMoment(formData).subscribe(
       response => {
         console.log("Success:", response);
@@ -32,12 +38,10 @@ createHandler(moment:Moment){
         // Tratar o erro, exibir mensagem
       }
     );
-    // enviar para o service
+    
+    this.messageService.add("Momento Adicionado Com sucesso")
 
-    this.momentService.createMoment(formData)
-    // exibir msg
-
-    // redirect
+    this.route.navigate(['/'])
 
   }
 
